@@ -21,3 +21,9 @@ Route::post('/register', function () {
     auth()->loginUsingId($user->id);
     return back();
 });
+
+
+Route::post('/logout', function () {
+    auth()->logout();
+    return back();
+});

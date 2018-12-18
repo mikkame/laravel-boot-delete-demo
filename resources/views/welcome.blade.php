@@ -23,6 +23,12 @@
     <div class="panel-body">
         
     </div>
+    <div class="panel-footer">
+        <form action="/logout" method="post">
+            {{csrf_field()}}
+            <button class="btn btn-danger" onclick="return confirm('デモシステムの関係上、ログアウトすると再度ログインできませんがログアウトしますか？')">ログアウト</button>
+        </form>
+    </div>
 </div>
 @endauth
 @endsection
