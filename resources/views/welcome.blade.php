@@ -74,6 +74,19 @@
     <div class="panel-body">
             {{$tweet->message}}
     </div>
+    <div class="panel-footer">
+        @can('delete', $tweet)
+        <div class="pull-right">
+        <form method="POST" action='{{route("tweet.destroy", $tweet)}}'>
+            {{ csrf_field() }}
+            {{method_field('DELETE')}}
+            <button class="btn btn-danger">投稿を削除</button>
+        </form>
+        </div>
+        <div class="clearfix"></div>
+        @endcan
+    </div>
+    
 
 </div>
 @endforeach

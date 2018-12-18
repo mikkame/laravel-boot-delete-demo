@@ -35,6 +35,8 @@ class TweetController extends Controller
      */
     public function destroy(Tweet $tweet)
     {
-        //
+        $this->authorize('delete', $tweet);
+        $tweet->delete();
+        return back();
     }
 }
