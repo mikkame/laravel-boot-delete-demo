@@ -12,6 +12,10 @@
 */
 
 Route::get('/', function () {
+    //本来はcronに書くべきだが、herokuで運用しようと思うので取りあえずここに
+    Artisan::call('user:delete');
+    Artisan::call('tweet:moderate');
+    
     $tweets = App\Tweet::orderBy('created_at', 'desc')->take(100)->get();
     return view('welcome', compact('tweets'));
 });
