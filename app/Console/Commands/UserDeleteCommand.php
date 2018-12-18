@@ -41,8 +41,10 @@ class UserDeleteCommand extends Command
     {
         $users = User::where('deleted_at', '<=', Carbon::now()->subMinutes(30))->withTrashed()->get();
         foreach ($users as $user) {
+            $user->likes()->forceDelete();
+            $user->tweets()->forceDelete();
             $user->forceDelete();
         }
-        
+
     }
 }
