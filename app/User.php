@@ -27,4 +27,21 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function tweets()
+    {
+        return $this->hasMany(Tweet::class);
+    }
+    public static function boot()
+    {
+        parent::boot();
+        self::deleting(function ($user) {
+            $user->name = 'deleted';
+            $user->email = 'deleted'.time();
+            $user->save();
+            foreach ($user->tweets as $tweet) {
+                $tweet->delete();
+            }
+        });
+    }
 }
