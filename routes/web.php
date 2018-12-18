@@ -39,4 +39,8 @@ Route::post('/deactive', function () {
 
 Route::group(['middleware' => 'auth'], function (){
     Route::resource('tweet', 'TweetController')->only(['store', 'destroy']);
+    Route::resource('like/{tweet}/', 'LikeController')->only(['store'])->names([
+        'store' => 'like.store' //FIXME この修正方法以外で綺麗なのあったらおしえてください
+    ]);
 });
+

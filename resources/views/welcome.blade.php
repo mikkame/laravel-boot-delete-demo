@@ -75,6 +75,12 @@
             {{$tweet->message}}
     </div>
     <div class="panel-footer">
+        @auth
+        <form method="POST" action='{{route("like.store", ["tweet" => $tweet->id])}}'>
+                {{ csrf_field() }}
+                <button class="btn btn-success">いいね ({{$tweet->likes()->count()}})</button>
+            </form>
+        @endauth
         @can('delete', $tweet)
         <div class="pull-right">
         <form method="POST" action='{{route("tweet.destroy", $tweet)}}'>
