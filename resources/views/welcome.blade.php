@@ -20,10 +20,23 @@
         <div class="panel panel-info">
             {{csrf_field()}}
             <div class="panel-heading">
-                ようこそ！　{{auth()->user()->name}} さん！
+                ようこそ！　{{auth()->user()->name}} さん！ つぶやいてみましょう！
             </div>
             <div class="panel-body">
-                
+                <p class="alert alert-warning">下記のボタンでつぶやく事が出来ます。モデレートが手間なので、定型文のみ投稿できる仕様です。<br>攻撃的な内容をつぶやいた場合、一定時間後に自動的につぶやきが削除されます。</p>
+                <div class="col-md-6">
+                    <form action="{{route('tweet.store')}}" method="POST">
+                        {{csrf_field()}}
+                        <button class="btn btn-success btn-lg center-block" name='mode' value="normal">一般的な内容をつぶやく</button>
+                    </form>
+                </div>
+
+                <div class="col-md-6">
+                        <form action="{{route('tweet.store')}}" method="POST">
+                            {{csrf_field()}}
+                            <button class="btn btn-danger btn-lg center-block" name='mode' value="bad">攻撃的な内容をつぶやく</button>
+                        </form>
+                    </div>
             </div>
             <div class="panel-footer">
                 <form action="/logout" method="post">

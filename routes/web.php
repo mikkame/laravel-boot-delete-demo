@@ -34,3 +34,8 @@ Route::post('/deactive', function () {
     $user->delete();
     return back();
 });
+
+
+Route::group(['middleware' => 'auth'], function (){
+    Route::resource('tweet', 'TweetController')->only(['store', 'delete']);
+});
