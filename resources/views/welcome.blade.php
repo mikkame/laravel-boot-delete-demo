@@ -53,7 +53,7 @@
                 解約処理
             </div>
             <div class="panel-body">
-                Twitterにならいアカウント情報は退会手続きから30日間のみ保持されます。
+                Twitterにならいアカウント情報は退会手続きから30<s>日</s>分間のみ保持されます。
             </div>
             <div class="panel-footer">
                 <form action="/deactive" method="post">
