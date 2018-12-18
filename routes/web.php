@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::post('/register', function () {
+    $user = factory(App\User::class)->create();
+    auth()->loginUsingId($user->id);
+    return back();
+});
