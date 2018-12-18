@@ -65,5 +65,17 @@
     </div>
 </div>
 @endauth
+
+@foreach($tweets as $tweet)
+<div class="panel panel-default">
+    <div class="panel-heading">
+        {{$tweet->user->name}}
+    </div>
+    <div class="panel-body">
+            {{$tweet->message}}
+    </div>
+
+</div>
+@endforeach
 @endsection
 

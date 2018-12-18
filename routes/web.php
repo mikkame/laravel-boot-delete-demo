@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $tweets = App\Tweet::orderBy('created_at', 'desc')->take(100)->get();
+    return view('welcome', compact('tweets'));
 });
 
 
