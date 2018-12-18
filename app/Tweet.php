@@ -38,6 +38,12 @@ class Tweet extends Model
         self::creating(function ($tweet) {
             $tweet->user_id = auth()->user()->id;
         });
+
+        self::deleting(function ($tweet) {
+            foreach ($tweet->likes as $like) {
+                $like->delete();
+            }
+        });
     }
 
     public function user()

@@ -32,6 +32,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Tweet::class);
     }
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
     public static function boot()
     {
         parent::boot();
@@ -42,6 +46,10 @@ class User extends Authenticatable
             foreach ($user->tweets as $tweet) {
                 $tweet->delete();
             }
+            foreach ($user->likes as $like) {
+                $like->delete();
+            }
         });
+        
     }
 }
