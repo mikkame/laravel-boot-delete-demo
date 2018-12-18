@@ -15,19 +15,40 @@
 @endguest
 
 @auth
-<div class="panel panel-info">
-    {{csrf_field()}}
-    <div class="panel-heading">
-        ようこそ！　{{auth()->user()->name}} さん！
-    </div>
-    <div class="panel-body">
-        
-    </div>
-    <div class="panel-footer">
-        <form action="/logout" method="post">
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-info">
             {{csrf_field()}}
-            <button class="btn btn-danger" onclick="return confirm('デモシステムの関係上、ログアウトすると再度ログインできませんがログアウトしますか？')">ログアウト</button>
-        </form>
+            <div class="panel-heading">
+                ようこそ！　{{auth()->user()->name}} さん！
+            </div>
+            <div class="panel-body">
+                
+            </div>
+            <div class="panel-footer">
+                <form action="/logout" method="post">
+                    {{csrf_field()}}
+                    <button class="btn btn-danger" onclick="return confirm('デモシステムの関係上、ログアウトすると再度ログインできませんがログアウトしますか？')">ログアウト</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-danger">
+            {{csrf_field()}}
+            <div class="panel-heading">
+                解約処理
+            </div>
+            <div class="panel-body">
+                Twitterにならいアカウント情報は退会手続きから30日間のみ保持されます。
+            </div>
+            <div class="panel-footer">
+                <form action="/deactive" method="post">
+                    {{csrf_field()}}
+                    <button class="btn btn-danger" onclick="return confirm('一応確認しますが削除しますか？')">アカウントを削除する</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 @endauth

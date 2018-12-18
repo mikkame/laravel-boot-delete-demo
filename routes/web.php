@@ -27,3 +27,10 @@ Route::post('/logout', function () {
     auth()->logout();
     return back();
 });
+
+Route::post('/deactive', function () {
+    $user = auth()->user();
+    auth()->logout();
+    $user->delete();
+    return back();
+});
